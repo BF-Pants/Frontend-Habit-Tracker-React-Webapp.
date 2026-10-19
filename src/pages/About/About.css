@@ -1,0 +1,61 @@
+.about-hero {
+    min-height: 35rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: #dbe0e4;
+    padding: 0 18px;
+    font-size: 28px;
+}
+
+.about-intro{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+p {
+    color: #373636;
+}
+
+.habit-mascots {
+    display: flex;
+    align-self: stretch;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 18px;
+}
+
+.habit-mascots img {
+    width: 240px;
+    height: 260px;
+
+    object-fit: contain;
+}
+
+.about-intro h1 {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    font-size: 56px;
+    font-weight: 700;
+}
+
+.about-description-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 22px 18px;
+    gap: 50rem;
+}
+
+
+
+.about-description-right {
+}
+
+.about-description-left {
+}
