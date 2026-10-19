@@ -1,0 +1,131 @@
+.archive-page{
+    width: 100%;
+    padding: 0 8px;
+}
+
+.archive-main-container{
+    min-height: 925px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background-color: #d9d9d9;
+    border-radius: 28px;
+    padding: 30px 0 70px 40px;
+}
+
+.archive-text-container{
+    min-width:0;
+    display: flex;
+}
+
+.archive-heading{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 62px 20px 15px;
+}
+
+.archive-heading h1 {
+    margin: 0;
+
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.archive-heading p {
+    margin: 12px 0 0;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    color: #444444;
+}
+
+.archive-aside-container {
+    display: flex;
+    gap: 2rem;
+}
+
+.archive-container {
+    background-color: white;
+    flex:2;
+    border-radius: 30px;
+    padding: 25px 18px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.archive-line {
+    min-height: 98px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px 0 76px;
+    background-color: #f3f3f3;
+    border-radius: 28px;
+}
+
+.archive-pending{
+    background-color: #d096fa;
+}
+
+.archive-completed {
+    background-color: #fa5050;
+}
+
+.habit-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.habit-info strong {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.undo-button{
+    width: 114px;
+    height: 48px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: #50a2b8;
+}
+
+.archive-finalize-button{
+    width: 114px;
+    height: 48px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: #fa5050;
+}
+
+.habit-buddy-card img {
+    width: 15rem;
+    height: 15rem;
+    display: block;
+}
+
+.habit-buddy-card {
+    margin-top: 150px;
+    padding: 42px 30px 20px;
+    text-align: center;
+}
+
+.archive-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5rem;
+}
