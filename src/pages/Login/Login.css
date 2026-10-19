@@ -1,0 +1,341 @@
+
+/*.login-header {*/
+/*    display: flex;*/
+/*    padding: 1.5rem 4rem;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*    align-self: stretch;*/
+/*}*/
+
+.login {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 568px;
+}
+
+.login-left-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 64px;
+
+    background-color: #f0f3f4;
+
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+
+    box-sizing: border-box;
+}
+
+.login-left-content {
+    width: 100%;
+    max-width: 520px;
+}
+
+.login-left-section h1 {
+    margin: 0 0 24px;
+
+    color: black;
+
+    font-family: Inter, Arial, sans-serif;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.1;
+
+    text-align: center;
+}
+
+.login-left-section p {
+    margin: 0;
+
+    color: rgba(0, 0, 0, 0.55);
+
+    font-family: Inter, Arial, sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.45;
+}
+
+
+/* =========================
+   Right Side container
+========================= */
+
+.login-form-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 64px;
+
+    border-bottom: 1px solid black;
+
+    box-sizing: border-box;
+}
+
+.login-form-container {
+    width: 100%;
+    max-width: 500px;
+}
+
+
+/* =========================
+   Heading
+========================= */
+
+.login-form-container h2 {
+    margin: 0;
+
+    color: black;
+
+    font-family: Inter, Arial, sans-serif;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.1;
+
+    text-align: center;
+}
+
+.subtitle-text {
+    margin: 12px 0 48px;
+
+    color: rgba(0, 0, 0, 0.55);
+
+    font-family: Inter, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.45;
+
+    text-align: center;
+}
+
+
+/* =========================
+   Login container
+========================= */
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+
+
+    gap: 18px;
+}
+
+.login-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+.login-group label {
+    color: black;
+
+    font-family: Inter, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.login-group input {
+    width: 100%;
+    height: 42px;
+
+    padding: 0 16px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+
+    background-color: white;
+
+    font-family: Inter, Arial, sans-serif;
+    font-size: 16px;
+}
+
+.login-group input::placeholder {
+    color: #b3b3b3;
+}
+
+.login-group input:focus {
+    outline: 2px solid #509cb1;
+    outline-offset: 1px;
+}
+
+
+/* =========================
+   Remember Me / Forgot Password
+========================= */
+
+.login-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 20px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: #144856;
+
+    font-family: Inter, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.remember-me input {
+    width: 24px;
+    height: 24px;
+
+    margin: 0;
+}
+
+.login-options a {
+    color: #144856;
+
+    font-family: Inter, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.login-options a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+    Standard Big Blue Button
+========================= */
+
+.big-button {
+    width: 100%;
+    height: 44px;
+
+    margin-top: 0;
+
+    border: none;
+    border-radius: 15px;
+
+    background-color: #509cb1;
+
+    color: white;
+
+    font-family: Inter, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.big-button:hover {
+    opacity: 0.9;
+}
+
+.big-button:active {
+    transform: translateY(1px);
+}
+
+
+/* =========================
+   Sign Up portion of login screen
+========================= */
+
+.signup-text {
+    display: flex;
+    justify-content: center;
+
+    gap: 6px;
+
+    margin-top: 8px;
+
+    font-family: Inter, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.signup-text span {
+    color: #144856;
+}
+
+.signup-text a {
+    color: black;
+
+    text-decoration: none;
+}
+
+.signup-text a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   Footer
+========================= */
+
+.footer p{
+    text-align: center;
+    color: black;
+
+}
+
+/* =========================
+   Responsive
+========================= */
+
+/*@media (max-width: 800px) {*/
+
+/*    .login-page {*/
+/*        grid-template-columns: 1fr;*/
+/*    }*/
+
+/*    .login-intro {*/
+/*        padding: 60px 24px;*/
+
+/*        border-right: none;*/
+/*    }*/
+
+/*    .login-intro h1 {*/
+/*        font-size: 42px;*/
+/*    }*/
+
+/*    .login-intro p {*/
+/*        font-size: 22px;*/
+/*    }*/
+
+/*    .login-form-section {*/
+/*        padding: 60px 24px;*/
+/*    }*/
+
+/*    .login-form-container h2 {*/
+/*        font-size: 42px;*/
+/*    }*/
+/*}*/
+
+
+/*@media (max-width: 480px) {*/
+
+/*    .login-intro h1 {*/
+/*        font-size: 36px;*/
+/*    }*/
+
+/*    .login-intro p {*/
+/*        font-size: 20px;*/
+/*    }*/
+
+/*    .login-form-container h2 {*/
+/*        font-size: 36px;*/
+/*    }*/
+
+/*    .form-options {*/
+/*        gap: 15px;*/
+/*    }*/
+/*}*/
