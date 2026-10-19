@@ -1,0 +1,226 @@
+.my-habits-page{
+    width: 100%;
+    padding: 0 8px;
+}
+
+.my-habits-main-container{
+    min-height: 925px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background-color: #d9d9d9;
+    border-radius: 28px;
+    padding: 30px 0 70px 40px;
+}
+
+
+.my-habits-text-container{
+    min-width:0;
+    display: flex;
+}
+
+.my-habits-heading{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 62px 20px 15px;
+}
+
+.my-habits-heading h1 {
+    margin: 0;
+
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.my-habits-heading p {
+    margin: 12px 0 0;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    color: #444444;
+}
+
+.save-button {
+    width: 210px;
+    height: 47px;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: #a9ed91;
+
+    font-size: 32px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.save-button:hover {
+    background-color: #99df82;
+}
+/* =========================
+   Habits List
+   ========================= */
+
+.habits-container {
+    background-color: white;
+    flex:2;
+    border-radius: 30px;
+
+    padding: 25px 18px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+
+}
+
+/* =========================
+   Individual Habit
+   ========================= */
+
+.habit-line {
+    min-height: 98px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px 0 76px;
+    background-color: #f3f3f3;
+    border-radius: 28px;
+}
+
+.habit-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.habit-info strong {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.habit-info span {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.habit-checkbox {
+    width: 35px;
+    height: 35px;
+
+    margin: 0;
+
+    appearance: none;
+
+    border: 1px solid #222222;
+    background-color: #f3f3f3;
+
+    cursor: pointer;
+}
+
+.habit-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5rem;
+}
+
+.my-habits-aside-container {
+    display: flex;
+    gap: 2rem;
+}
+
+
+
+.my-habits-aside-container img {
+    width: 15rem;
+    height: 15rem;
+    display: block;
+}
+
+.habit-buddy-card {
+    margin-top: 150px;
+    padding: 42px 30px 20px;
+    text-align: center;
+}
+
+.habit-checkbox:checked {
+    background-color: #a9ed91;
+}
+
+.habit-checkbox:checked::after {
+    content: "✓";
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.archive-button,
+.delete-button {
+    width: 114px;
+    height: 48px;
+
+    border: none;
+    border-radius: 10px;
+
+
+    color: white;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.archive-button {
+    background-color: #8148b8;
+}
+
+.archive-button:hover {
+    background-color: #703ca5;
+}
+
+.delete-button {
+    background-color: #b84f52;
+}
+
+.delete-button:hover {
+    background-color: #a54245;
+}
+
+/* =========================
+   Add Habit
+   ========================= */
+
+.add-habit-button {
+    width: calc(100% - 30px);
+    height: 47px;
+
+    margin: 30px 15px 0;
+
+    border: none;
+    border-radius: 10px;
+
+    background-color: #50a2b8;
+
+    color: white;
+
+    font-size: 30px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.add-habit-button:hover {
+    background-color: #4494aa;
+}
