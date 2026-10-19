@@ -1,0 +1,253 @@
+/* =========================
+   Home Page
+========================= */
+
+.home-page {
+    width: 100%;
+
+    padding: 14px 12px 0;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   Shared Card Styles
+========================= */
+
+.top-dashboard,
+.bottom-dashboard {
+    display: grid;
+
+    background-color: #d9d9d9;
+
+    border-radius: 30px;
+
+    padding: 14px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   Top Dashboard
+========================= */
+
+.top-dashboard {
+    /*grid-template-columns: 292px 1fr;*/
+    display:flex;
+    flex-direction: row;
+    justify-content: stretch;
+    align-items:stretch;
+
+    gap: 14px;
+
+    min-height: 440px;
+}
+
+
+/* =========================
+   Progress Card
+========================= */
+
+.daily-progress-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    background-color: white;
+
+    border-radius: 28px;
+
+    padding: 10px 20px 20px;
+
+    box-sizing: border-box;
+}
+
+.daily-progress-card h2 {
+    margin: 0 0 12px;
+
+    font-family: Inter, Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+
+    text-align: center;
+}
+/* =========================
+   Progress Wheel
+========================= */
+
+.progress-wheel {
+    width: 220px;
+    height: 220px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 4px;
+}
+
+.progress-wheel-svg {
+    width: 220px;
+    height: 220px;
+
+    transform: rotate(-90deg);
+
+    overflow: visible;
+}
+
+.empty-progress-wheel {
+    fill: none;
+
+    stroke: #e8ddf8;
+
+    stroke-width: 22;
+
+    stroke-linecap: round;
+}
+
+.filled-progress-wheel {
+    fill: none;
+
+    stroke: #6b4faf;
+
+    stroke-width: 22;
+
+    stroke-linecap: round;
+
+    transition: stroke-dashoffset 0.4s ease;
+}
+
+
+
+/* =========================
+   Habit card
+========================= */
+
+.habit-card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    min-width: 0;
+
+    background-color: white;
+
+    border-radius: 28px;
+
+    padding: 16px 22px;
+
+    box-sizing: border-box;
+}
+
+.habit-card h2 {
+    margin: 0 0 6px;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.habit-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+
+    height: 330px;
+
+    padding-right: 8px;
+
+    overflow-y: auto;
+}
+
+.habit-item {
+    flex-shrink: 0;
+
+    min-height: 5rem;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 32px;
+
+    box-sizing: border-box;
+
+    border-radius: 28px;
+
+    background-color: #f3f3f3;
+
+
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.habit-item.completed {
+    background-color: #b0ec98;
+}
+
+/* =========================
+   Bottom Dashboard
+========================= */
+
+.bottom-dashboard {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    min-height: 27rem;
+    margin-top: 3rem;
+}
+
+.note-textarea {
+    flex-grow: 2;
+
+    background-color: white;
+
+    border-radius: 2rem;
+
+    padding: 2rem 2rem;
+
+}
+
+.note-textarea h2 {
+    margin: 0 0 18px;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+
+.note-textarea textarea {
+    width: 100%;
+    height: 255px;
+
+    display: block;
+
+    padding: 10px;
+
+
+    resize: none;
+
+    border: 1px solid #d9d9d9;
+
+    background-color: white;
+
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.15);
+
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.notes-card textarea::placeholder {
+    color: #444444;
+
+    opacity: 1;
+}
+.weather-container{
+    flex-grow: 1;
+
+    background-color: white;
+
+    border-radius: 2rem;
+    padding: 2rem 2rem;
+}

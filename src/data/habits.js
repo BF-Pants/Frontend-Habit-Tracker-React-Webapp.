@@ -1,0 +1,58 @@
+const habits = [
+    {
+        id: 1,
+        name: "Running",
+        frequency: "Weekly",
+        notes: "",
+        completed: true,
+        archivepending: true,
+        archived: false,
+    },
+    {
+        id: 2,
+        name: "Reading",
+        frequency: "Daily",
+        notes: "5 pages a day",
+        completed: true,
+        archivepending: false,
+        archived: false,
+    },
+    {
+        id: 3,
+        name: "Drink water",
+        frequency: "Daily",
+        notes: "2,5 litres a day",
+        completed: false,
+        archivepending: false,
+        archived: false,
+    },
+    {
+        id: 4,
+        name: "Get enough sleep",
+        frequency: "Daily",
+        notes: "7-8 hours a day",
+        completed: false,
+        archivepending: false,
+        archived: false,
+    },
+    {
+        id: 5,
+        name: "Meditate",
+        frequency: "Daily",
+        notes: "10 minutes long",
+        completed: false,
+        archivepending: true,
+        archived: false,
+    },
+    {
+        id: 6,
+        name: "Go outside",
+        frequency: "Daily",
+        notes: "",
+        completed: false,
+        archivepending: true,
+        archived: false,
+    },
+];
+
+export default habits;

@@ -1,0 +1,61 @@
+{
+  "collections": [
+    {
+    "name": "habits",
+      "fields" : [
+        {
+          "id": "habitId",
+          "name": "name",
+          "frequency": "frequency",
+          "notes": "",
+          "completed": false,
+          "archivepending": false,
+          "archived": false
+        }
+      ],
+      "permissions": {
+        "GET": [
+          "user",
+          "admin"
+        ],
+        "POST": [
+          "user",
+          "admin"
+        ],
+        "PUT": [
+          "user",
+          "admin"
+        ],
+        "DELETE": [
+          "user",
+          "admin"
+        ]
+      }
+    }
+  ],
+  "users": [
+    {
+      "email": "admin@habitbuddy.com",
+      "password": "HabbitBuddy123",
+      "roles": [
+        "admin"
+      ]
+    }
+  ],
+  "data": {
+    "habits" : [
+      {
+        "id": 1,
+        "name": "Running",
+        "frequency": "Weekly",
+        "notes": "",
+        "completed": false,
+        "archivepending": true,
+        "archived": false
+      }
+    ]
+  }
+}
+
+
+
