@@ -18,6 +18,7 @@ function Archives() {
             )
         )
         console.log(habits);
+
     }
     return (
         <>
