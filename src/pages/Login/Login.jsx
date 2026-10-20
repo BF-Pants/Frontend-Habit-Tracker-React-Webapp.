@@ -1,7 +1,35 @@
 
 import "./Login.css"
 import {Link} from "react-router-dom";
+import {AuthContext} from "/src/context/AuthContext.jsx";
+import {useContext, useState} from "react";
+import axios from "axios";
+
 function Login() {
+
+    const { login } = useContext(AuthContext);
+    const [error, toggleError] = useState(false)
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        toggleError(false);
+
+        try {
+            const response = await axios.post('https://novi-backend-api-wgsgz.ondigitalocean.app/api/login' , {
+                    email: email,
+                    password: password,
+                },
+            )
+            login(response.data)
+            console.log(response.data);
+        } catch (e) {
+            console.error(e);
+            toggleError(true);
+
+        }
+    }
 
     return (
         <>
@@ -24,7 +52,7 @@ function Login() {
                         <p className="subtitle-text">Log into your Habit Buddy account</p>
 
 
-                        <form className="login-form">
+                        <form className="login-form" onSubmit={handleSubmit}>
                             <div className="login-group">
                                 <label htmlFor="email">
                                     Enter e-mail
@@ -33,6 +61,8 @@ function Login() {
                                     type="email"
                                     id="email"
                                     placeholder="Example@email.com"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                             </div>
 
@@ -45,7 +75,10 @@ function Login() {
                                     type="password"
                                     id="password"
                                     placeholder="Password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
+                                {error && <p>De gegeven e-mail of wachtwoord is onjuist</p>}
                             </div>
                             <button type="submit" className="big-button">
                                 Log in
@@ -54,7 +87,7 @@ function Login() {
 
                         <div className="signup-text">
                             <span>Don't have an account?</span>
-                            <p><Link to="/Register" >Sign up!</Link></p>
+                            <p><Link to="/register" >Sign up!</Link></p>
                         </div>
 
                     </div>
