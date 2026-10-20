@@ -4,13 +4,43 @@
     "name": "habits",
       "fields" : [
         {
-          "id": "habitId",
+          "name": "habit_id",
+          "type": "number",
+          "required": true
+        },
+        {
           "name": "name",
-          "frequency": "frequency",
-          "notes": "",
-          "completed": false,
-          "archivepending": false,
-          "archived": false
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "frequency",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "completed",
+          "type": "boolean",
+          "required": true,
+          "default": false
+        },
+        {
+          "name": "notes",
+          "type": "string",
+          "required": true,
+          "default": ""
+        },
+        {
+          "name": "archivepending",
+          "type": "boolean",
+          "required": true,
+          "default": false
+        },
+        {
+          "name": "archived",
+          "type": "boolean",
+          "required": true,
+          "default": false
         }
       ],
       "permissions": {
@@ -28,6 +58,9 @@
         ],
         "DELETE": [
           "user",
+          "admin"
+        ],
+        "PATCH": [
           "admin"
         ]
       }
@@ -50,7 +83,7 @@
         "frequency": "Weekly",
         "notes": "",
         "completed": false,
-        "archivepending": true,
+        "archivepending": false,
         "archived": false
       }
     ]
