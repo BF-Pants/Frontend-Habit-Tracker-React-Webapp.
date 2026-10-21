@@ -1,11 +1,40 @@
 import "../Login/Login.css"
-import {Link, NavLink} from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+
 
 function Register() {
     const navigate = useNavigate();
-    function navigateLogin() {
-        navigate("/");
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, toggleError] = useState(false);
+    const [loading, toggleLoading] = useState(false);
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        toggleError(false);
+        toggleLoading(true);
+
+        try {
+            await axios.post('https://novi-backend-api-wgsgz.ondigitalocean.app/api/users', {
+                    email: email,
+                    password: password,
+                    roles: ["member"],
+                },
+                {
+                    headers: {
+                        'novi-education-project-id': '39cb5325-95c1-4319-a258-146625bf33ea'
+                    }
+                }
+            );
+            navigate("/login");
+        } catch (e) {
+            console.error(e);
+            toggleError(true);
+        }
+        toggleLoading(false);
     }
     return (
         <>
@@ -28,7 +57,7 @@ function Register() {
                         <p className="subtitle-text">Create your Habit Buddy account</p>
 
 
-                        <form className="login-form">
+                        <form className="login-form" onClick={handleSubmit}>
                             <div className="login-group">
                                 <label htmlFor="email">
                                     Enter e-mail
@@ -37,6 +66,7 @@ function Register() {
                                     type="email"
                                     id="email"
                                     placeholder="Example@email.com"
+                                    onChange={e => setEmail(e.target.value)}
                                     required
                                 />
                             </div>
@@ -50,15 +80,18 @@ function Register() {
                                     type="password"
                                     id="password"
                                     placeholder="Password"
+                                    onChange={e => setPassword(e.target.value)}
                                     required
                                 />
                             </div>
-                            <button type="submit" className="big-button" onClick={navigateLogin}>Register account</button>
+                            {error && <p>Account already exists. Try using a different email</p>}
+
+                            <button type="submit" className="big-button" onClick={() => navigate("/")} disabled={loading}>Register account</button>
                         </form>
 
                         <div className="signup-text">
                             <span>Already have an account?</span>
-                            <p><Link to="/login" >Login!</Link></p>
+                            <p><Link to="/" >Login!</Link></p>
                         </div>
 
                     </div>
