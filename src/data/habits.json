@@ -4,9 +4,15 @@
     "name": "habits",
       "fields" : [
         {
-          "name": "habit_id",
+          "name": "id",
           "type": "number",
           "required": true
+        },
+        {
+          "name": "userId",
+          "type": "reference:users",
+          "required": false,
+          "default": null
         },
         {
           "name": "name",
@@ -33,15 +39,18 @@
         {
           "name": "archivepending",
           "type": "boolean",
-          "required": true,
-          "default": false
+          "default": false,
+          "required": true
+
         },
         {
           "name": "archived",
           "type": "boolean",
-          "required": true,
-          "default": false
+          "default": false,
+          "required": true
+
         }
+
       ],
       "permissions": {
         "GET": [
@@ -69,7 +78,7 @@
   "users": [
     {
       "email": "admin@habitbuddy.com",
-      "password": "HabbitBuddy123",
+      "password": "HabitBuddy123",
       "roles": [
         "admin"
       ]
@@ -81,10 +90,21 @@
         "id": 1,
         "name": "Running",
         "frequency": "Weekly",
-        "notes": "",
+        "notes": "Run for 1 hour & 45 minutes",
         "completed": false,
         "archivepending": false,
-        "archived": false
+        "archived": false,
+        "userId": 0
+      },
+      {
+        "id": 2,
+        "name": "Running",
+        "frequency": "Weekly",
+        "notes": "Run for 1 hour & 45 minutes",
+        "completed": false,
+        "archivepending": false,
+        "archived": false,
+        "userId": 1
       }
     ]
   }
