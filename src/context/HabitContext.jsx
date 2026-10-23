@@ -51,6 +51,35 @@ function HabitContextProvider({ children }) {
         }
     }
 
+    async function createHabit(newHabitData) {
+        const userId = isAuth.user?.userId;
+        const token = localStorage.getItem("token");
+
+        if (userId === null || !token) {
+            return;
+        }
+
+        try {
+            const response = await axios.post("https://novi-backend-api-wgsgz.ondigitalocean.app/api/habits",
+                {
+                    ...newHabitData,
+                    userId: userId,
+                },
+
+                {
+                    headers: {
+                        'novi-education-project-id': '39cb5325-95c1-4319-a258-146625bf33ea',
+                        Authorization: `Bearer ${ token }`,
+                    },
+                }
+            );
+
+            setHabits([...habits, response.data])
+        } catch (e) {
+            console.error("Could not create habit", e);
+            throw e;
+        }
+    }
 
     useEffect(() => {
         console.log("use effect launch")
@@ -78,6 +107,7 @@ function HabitContextProvider({ children }) {
         loading,
         error,
         getHabits,
+        createHabit,
     };
 
     return (

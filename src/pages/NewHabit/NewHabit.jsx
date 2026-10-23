@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import {useContext, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import {HabitContext} from "../../context/HabitContext.jsx";
 import "./NewHabit.css"
 import Hebby from "../../assets/Logo/HebbyLogo.png"
 import Habby from "../../assets/Logo/HabbyLogo.png"
@@ -9,12 +10,12 @@ function NewHabit () {
     const [name, setName] = useState("");
     const [frequency, setFrequency] = useState("");
     const [notes, setNotes] = useState("");
+    const { createHabit }= useContext(HabitContext);
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
 
         const newHabit = {
-            id: Math.random().toString(),
             name,
             frequency,
             notes,
@@ -22,6 +23,12 @@ function NewHabit () {
             archivepending: false,
             archived: false,
         };
+        try {
+            await createHabit(newHabit)
+        } catch (e) {
+            console.log("Couldn't create habit", e)
+        }
+
         console.log("New habit:", newHabit);
 
         navigate("/habits");
