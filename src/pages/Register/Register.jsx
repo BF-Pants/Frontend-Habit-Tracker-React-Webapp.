@@ -21,7 +21,7 @@ function Register() {
             await axios.post('https://novi-backend-api-wgsgz.ondigitalocean.app/api/users', {
                     email: email,
                     password: password,
-                    roles: ["member"],
+                    roles: ["user"],
                 },
                 {
                     headers: {
@@ -29,7 +29,7 @@ function Register() {
                     }
                 }
             );
-            navigate("/login");
+            navigate("/");
         } catch (e) {
             console.error(e);
             toggleError(true);
