@@ -21,7 +21,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/home" element={ isAuth.isAuth ? <Home /> : <Navigate to="/" /> } />
+                <Route path="/home" element={<Home />} />
                 <Route path="/habits" element={<MyHabits />} />
                 <Route path="/createhabit" element={<NewHabit />} />
                 <Route path="/archive" element={<Archives />} />
