@@ -91,7 +91,7 @@
         "name": "Running",
         "frequency": "Weekly",
         "notes": "Run for 1 hour & 45 minutes",
-        "completed": false,
+        "completed": true,
         "archivepending": false,
         "archived": false,
         "userId": 0

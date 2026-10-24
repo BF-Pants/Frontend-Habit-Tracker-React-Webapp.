@@ -9,7 +9,7 @@ import {HabitContext} from "../../context/HabitContext.jsx";
 function myHabits(){
     const navigate= useNavigate();
 
-    const { habits, loading, error } = useContext(HabitContext);
+    const { habits, loading, error, toggleHabit, saveHabits, archiveHabit } = useContext(HabitContext);
 
     if (loading) {
         return <p> Loading....</p>;
@@ -49,10 +49,10 @@ function myHabits(){
 
 
     // const [habits, setHabits] = useState(habitdata);
-    function toggleHabit(id) {
-            habits.map((habit) =>
-                habit.id === id ? { ...habit, completed: !habit.completed } : habit);
-    }
+    // function toggleHabit(id) {
+    //         habits.map((habit) =>
+    //             habit.id === id ? { ...habit, completed: !habit.completed } : habit);
+    // }
     //
     function deleteHabit() {
         console.log("test")
@@ -61,20 +61,18 @@ function myHabits(){
 
     }
 
-    function archiveHabit() {
-        console.log("test")
-        // setHabits((currentHabits) => currentHabits.map((habit) => habit.id === id ? {...habit, archivepending: true} :habit
-        //     )
-        // );
-    }
+    // function archiveHabit() {
+    //     console.log("test")
+    //     toggleHabit()
+    // }
 
     function addHabit() {
         navigate("/createhabit")
     }
     //
-    function saveHabits() {
-        console.log("Saved habits:");
-    }
+    // function saveHabits() {
+    //     console.log("Saved habits:");
+    // }
 
 
     return (
@@ -102,9 +100,10 @@ function myHabits(){
                                         <div className="habit-actions">
                                             <input
                                                 className="habit-checkbox" type="checkbox"
+                                                checked={habit.completed}
                                                 onChange={() => toggleHabit(habit.id)}
                                             />
-                                            <button className="archive-button" onClick={() => archiveHabit()}>
+                                            <button className="archive-button" onClick={() => archiveHabit(habit.id)}>
                                                 Archive
                                             </button>
                                             <button className="delete-button" onClick={() => deleteHabit()}>
