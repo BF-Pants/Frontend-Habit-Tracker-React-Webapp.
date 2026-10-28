@@ -183,7 +183,26 @@ function HabitContextProvider({ children }) {
     }
 //--------------------------------------------------------------------------------------//
     async function deleteHabit(habitId) {
-        console.log("test");
+        const userId = isAuth.user?.userId;
+        const token = localStorage.getItem("token");
+
+        if (userId === null || !token) {
+            return;
+        }
+        try {
+                await axios.delete(`https://novi-backend-api-wgsgz.ondigitalocean.app/api/habits/${habitId}`,
+                    {
+                        headers: {
+                            'novi-education-project-id': '39cb5325-95c1-4319-a258-146625bf33ea',
+                            Authorization: `Bearer ${ token }`,
+                        }
+                    }
+                )
+            setHabits(habits.filter((habit) => habit.id !== habitId));
+            console.log("habits deleted:" , habits)
+        } catch (e) {
+            console.error("Something went wrong", e)
+        }
     }
 //--------------------------------------------------------------------------------------//
     useEffect(() => {
@@ -217,7 +236,8 @@ function HabitContextProvider({ children }) {
         saveHabits,
         archiveHabit,
         archiveFinalise,
-        archiveUndo
+        archiveUndo,
+        deleteHabit
     };
 
     return (
