@@ -10,9 +10,10 @@ function HabitContextProvider({ children }) {
 
 
     const [habits, setHabits] = useState([]);
+    const [originalHabits, setOriginalHabits] = useState([]);
     const [loading, toggleLoading] = useState(true);
     const [error, setError] = useState(null);
-
+//--------------------------------------------------------------------------------------------//
     async function getHabits() {
         const token = localStorage.getItem("token");
         const userId= isAuth.user?.userId;
@@ -50,7 +51,7 @@ function HabitContextProvider({ children }) {
             toggleLoading(false);
         }
     }
-
+//-------------------------------------------------------------------------------------------//
     async function createHabit(newHabitData) {
         const userId = isAuth.user?.userId;
         const token = localStorage.getItem("token");
@@ -80,7 +81,130 @@ function HabitContextProvider({ children }) {
             throw e;
         }
     }
+//--------------------------------------------------------------------------------------//
+    async function toggleHabit(habitId) {
+        const updatedHabits= habits.map((habit) => {
+            if (habit.id === habitId) {
+                return {
+                    ...habit,
+                    completed: !habit.completed,
+                };
+            }
 
+            return habit;
+        });
+        setHabits(updatedHabits);
+        console.log(updatedHabits);
+    }
+//--------------------------------------------------------------------------------------//
+    async function archiveHabit(habitId) {
+        const updatedHabits= habits.map((habit) => {
+            if (habit.id === habitId) {
+                return {
+                    ...habit,
+                    archivepending: true,
+                };
+            }
+
+            return habit;
+        });
+        setHabits(updatedHabits);
+
+        console.log(updatedHabits);
+    }
+
+//--------------------------------------------------------------------------------------//
+    async function archiveFinalise(habitId) {
+        const updatedHabits= habits.map((habit) => {
+            if (habit.id === habitId) {
+                return {
+                    ...habit,
+                    archived: true,
+                    archivepending: false,
+                };
+            }
+            return habit
+        });
+        setHabits(updatedHabits);
+
+        console.log(updatedHabits);
+    }
+//--------------------------------------------------------------------------------------//
+    async function archiveUndo(habitId) {
+        const updatedHabits= habits.map((habit) => {
+            if (habit.id === habitId) {
+                return {
+                    ...habit,
+                    archived: false, // In order to reliably go back to original state we set archived to false as well.
+                    archivepending: false,
+                };
+            }
+            return habit
+        });
+        setHabits(updatedHabits);
+
+        console.log(updatedHabits);
+    }
+//--------------------------------------------------------------------------------------//
+    async function saveHabits() {
+        const token = localStorage.getItem("token");
+
+        const changedHabits = habits.filter((habit) => {
+            const originalHabit = originalHabits.find(
+                (original) => original.id === habit.id
+            );
+
+            if (!originalHabit) return false;
+
+            return Object.keys(habit).some((key) => {
+                if (key === 'id' || key === 'userId') return false;
+
+                return habit[key] !== originalHabit[key];
+            });
+        });
+
+        try {
+            for (const habit of changedHabits) {
+                await axios.put(`https://novi-backend-api-wgsgz.ondigitalocean.app/api/habits/${habit.id}`,
+                    habit,
+                    {
+                        headers: {
+                            'novi-education-project-id': '39cb5325-95c1-4319-a258-146625bf33ea',
+                            Authorization: `Bearer ${ token }`,
+                        }
+                    }
+                )
+            }
+            setOriginalHabits(habits.map((habit) => ({ ...habit })));
+            console.log("habits saved:" , habits)
+        } catch (e) {
+            console.error("Something went wrong", e)
+        }
+    }
+//--------------------------------------------------------------------------------------//
+    async function deleteHabit(habitId) {
+        const userId = isAuth.user?.userId;
+        const token = localStorage.getItem("token");
+
+        if (userId === null || !token) {
+            return;
+        }
+        try {
+                await axios.delete(`https://novi-backend-api-wgsgz.ondigitalocean.app/api/habits/${habitId}`,
+                    {
+                        headers: {
+                            'novi-education-project-id': '39cb5325-95c1-4319-a258-146625bf33ea',
+                            Authorization: `Bearer ${ token }`,
+                        }
+                    }
+                )
+            setHabits(habits.filter((habit) => habit.id !== habitId));
+            console.log("habits deleted:" , habits)
+        } catch (e) {
+            console.error("Something went wrong", e)
+        }
+    }
+//--------------------------------------------------------------------------------------//
     useEffect(() => {
         console.log("use effect launch")
 
@@ -100,14 +224,20 @@ function HabitContextProvider({ children }) {
         }
     }, [isAuth.status, isAuth.isAuth, isAuth.user?.userId]);
 
-
+//-------------------------------------------------------------------------------------//
     const data = {
         habits,
         setHabits,
         loading,
         error,
+        toggleHabit,
         getHabits,
         createHabit,
+        saveHabits,
+        archiveHabit,
+        archiveFinalise,
+        archiveUndo,
+        deleteHabit
     };
 
     return (

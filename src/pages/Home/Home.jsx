@@ -1,6 +1,8 @@
 
 import "./Home.css"
-import habitdata from "../../data/habits.js";
+import {HabitContext} from "../../context/HabitContext.jsx";
+import {useContext} from "react";
+
 
 function ProgressWheel({completed, total}) {
     const percentage = total === 0 ? 0 : Math.round((completed/total) * 100);
@@ -28,16 +30,16 @@ function ProgressWheel({completed, total}) {
                     r={radius}
                     strokeDasharray={circumference}
                     strokeDashoffset={progress}
-                /> {/* circle svg that gets laid on top of the base when a gets completed.  */}
+                /> {/* circle svg that gets laid on top of the base when a habit is completed.  */}
             </svg>
         </div>
     )
 }
 
 function Home() {
-
-    const completedHabits = habitdata.filter((habit) => habit.completed).length;
-    const totalHabits = habitdata.length
+    const { habits } = useContext(HabitContext);
+    const completedHabits = habits.filter((habit) => habit.completed).length;
+    const totalHabits = habits.length
 
     return (
         <>
@@ -54,14 +56,16 @@ function Home() {
                             {completedHabits}/{totalHabits} habits completed
                         </p>
                     </div>
-                    {/* Container that shows the current  */}
+                    {/* Container that shows the current habits */}
                     <div className="habit-card">
                         <h2>Today's habits</h2>
                         <article className="habit-list">
-                            {habitdata.map((habit, index) => (
-                                <div className={`habit-item ${habit.completed ? 'completed' : ''}`} key={index}>
-                                    {habit.name}
+                            {habits.map((habit) => (
+                                <div className={`habit-item ${habit.completed ? 'completed' : ''}`} key={habit.id}>
+                                    <span className="habit-name">{habit.name}</span>
+                                    <span className="habit-notes">{habit.notes}</span>
                                 </div>
+
                                 ))}
                         </article>
 

@@ -1,7 +1,7 @@
 
 import "./MyHabits.css"
 import mascot from "../../assets/Logo/HabbyLogo.png"
-import {useContext, useEffect, useState} from "react";
+import {useContext} from "react";
 import { useNavigate } from "react-router-dom";
 import {HabitContext} from "../../context/HabitContext.jsx";
 
@@ -9,7 +9,7 @@ import {HabitContext} from "../../context/HabitContext.jsx";
 function myHabits(){
     const navigate= useNavigate();
 
-    const { habits, loading, error } = useContext(HabitContext);
+    const { habits, loading, error, toggleHabit, saveHabits, archiveHabit, deleteHabit } = useContext(HabitContext);
 
     if (loading) {
         return <p> Loading....</p>;
@@ -19,61 +19,29 @@ function myHabits(){
         return <p> {error}</p>;
     }
 
-    // if (habits.length === 0) {
-    //     return <p>No habits have been created. Try creating one!</p>
-    // }
 
-    // useEffect(()=>{
-    //     const token = localStorage.getItem('token');
-    //     async function getHabits(){
-    //         try{
-    //             await axios.get("https://novi-backend-api-wgsgz.ondigitalocean.app/api/habits",
-    //                 {
-    //                     headers:{
-    //                         'novi-education-project-id': '39cb5325-95c1-4319-a258-146625bf33ea',
-    //                         Authorization: `Bearer ${token}`,
-    //                     }
-    //                 },
-    //
-    //                 );
-    //
-    //         } catch (e) {
-    //             console.error(e)
-    //         }
-    //     }
-    // void getHabits();
-    // console.log(isAuth)
-    // }, [])
+    function handleDelete(habitId) {
+        const confirmed = window.confirm(
+            "Are you sure you want to delete this habit?"
+        );
 
-
-
-
-    // const [habits, setHabits] = useState(habitdata);
-    function toggleHabit(id) {
-            habits.map((habit) =>
-                habit.id === id ? { ...habit, completed: !habit.completed } : habit);
-    }
-    //
-    function deleteHabit() {
-        console.log("test")
-        // setHabits(
-        //     habits.filter((habit) => habit.id !== id)
-
+        if (confirmed) {
+            deleteHabit(habitId);
+        }
     }
 
-    function archiveHabit() {
-        console.log("test")
-        // setHabits((currentHabits) => currentHabits.map((habit) => habit.id === id ? {...habit, archivepending: true} :habit
-        //     )
-        // );
+    function handleArchive(habitId) {
+        const confirmed = window.confirm(
+            "Are you sure you want to archive this habit?"
+        );
+
+        if (confirmed) {
+            archiveHabit(habitId);
+        }
     }
 
     function addHabit() {
         navigate("/createhabit")
-    }
-    //
-    function saveHabits() {
-        console.log("Saved habits:");
     }
 
 
@@ -93,7 +61,7 @@ function myHabits(){
                         <div className="my-habits-aside-container">
                             <div className="habits-container">
 
-                                {habits.map((habit) => (
+                                {habits.filter((habit) => habit.archivepending === false && habit.archived === false).map((habit) =>(
                                     <div className="habit-line" key={habit.id} >
                                         <div className="habit-info">
                                             <strong>{habit.name}</strong>
@@ -102,12 +70,13 @@ function myHabits(){
                                         <div className="habit-actions">
                                             <input
                                                 className="habit-checkbox" type="checkbox"
+                                                checked={habit.completed}
                                                 onChange={() => toggleHabit(habit.id)}
                                             />
-                                            <button className="archive-button" onClick={() => archiveHabit()}>
+                                            <button className="archive-button" onClick={() => handleArchive(habit.id)}>
                                                 Archive
                                             </button>
-                                            <button className="delete-button" onClick={() => deleteHabit()}>
+                                            <button className="delete-button" onClick={() => handleDelete(habit.id)}>
                                                 Delete
                                             </button>
                                         </div>

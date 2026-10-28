@@ -57,7 +57,7 @@ function Register() {
                         <p className="subtitle-text">Create your Habit Buddy account</p>
 
 
-                        <form className="login-form" onClick={handleSubmit}>
+                        <form className="login-form">
                             <div className="login-group">
                                 <label htmlFor="email">
                                     Enter e-mail
@@ -86,7 +86,7 @@ function Register() {
                             </div>
                             {error && <p>Account already exists. Try using a different email</p>}
 
-                            <button type="submit" className="big-button" onClick={() => navigate("/")} disabled={loading}>Register account</button>
+                            <button type="submit" className="big-button" onClick={handleSubmit} disabled={loading}>Register account</button>
                         </form>
 
                         <div className="signup-text">
