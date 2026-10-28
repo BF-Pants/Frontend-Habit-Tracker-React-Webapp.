@@ -102,13 +102,47 @@ function HabitContextProvider({ children }) {
             if (habit.id === habitId) {
                 return {
                     ...habit,
-                    archivepending: !habit.archivepending,
+                    archivepending: true,
                 };
             }
 
             return habit;
         });
         setHabits(updatedHabits);
+
+        console.log(updatedHabits);
+    }
+
+//--------------------------------------------------------------------------------------//
+    async function archiveFinalise(habitId) {
+        const updatedHabits= habits.map((habit) => {
+            if (habit.id === habitId) {
+                return {
+                    ...habit,
+                    archived: true,
+                    archivepending: false,
+                };
+            }
+            return habit
+        });
+        setHabits(updatedHabits);
+
+        console.log(updatedHabits);
+    }
+//--------------------------------------------------------------------------------------//
+    async function archiveUndo(habitId) {
+        const updatedHabits= habits.map((habit) => {
+            if (habit.id === habitId) {
+                return {
+                    ...habit,
+                    archived: false, // In order to reliably go back to original state we set archived to false as well.
+                    archivepending: false,
+                };
+            }
+            return habit
+        });
+        setHabits(updatedHabits);
+
         console.log(updatedHabits);
     }
 //--------------------------------------------------------------------------------------//
@@ -182,6 +216,8 @@ function HabitContextProvider({ children }) {
         createHabit,
         saveHabits,
         archiveHabit,
+        archiveFinalise,
+        archiveUndo
     };
 
     return (

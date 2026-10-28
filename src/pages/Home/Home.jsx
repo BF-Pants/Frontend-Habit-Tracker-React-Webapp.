@@ -1,6 +1,5 @@
 
 import "./Home.css"
-import habitdata from "../../data/habits.js";
 import {HabitContext} from "../../context/HabitContext.jsx";
 import {useContext} from "react";
 
@@ -31,7 +30,7 @@ function ProgressWheel({completed, total}) {
                     r={radius}
                     strokeDasharray={circumference}
                     strokeDashoffset={progress}
-                /> {/* circle svg that gets laid on top of the base when a gets completed.  */}
+                /> {/* circle svg that gets laid on top of the base when a habit is completed.  */}
             </svg>
         </div>
     )
@@ -57,7 +56,7 @@ function Home() {
                             {completedHabits}/{totalHabits} habits completed
                         </p>
                     </div>
-                    {/* Container that shows the current  */}
+                    {/* Container that shows the current habits */}
                     <div className="habit-card">
                         <h2>Today's habits</h2>
                         <article className="habit-list">

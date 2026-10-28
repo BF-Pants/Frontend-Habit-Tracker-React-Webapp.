@@ -9,7 +9,7 @@ import {HabitContext} from "../../context/HabitContext.jsx";
 function myHabits(){
     const navigate= useNavigate();
 
-    const { habits, loading, error, toggleHabit, saveHabits, archiveHabit } = useContext(HabitContext);
+    const { habits, loading, error, toggleHabit, saveHabits, archiveHabit, } = useContext(HabitContext);
 
     if (loading) {
         return <p> Loading....</p>;
@@ -91,7 +91,7 @@ function myHabits(){
                         <div className="my-habits-aside-container">
                             <div className="habits-container">
 
-                                {habits.map((habit) => (
+                                {habits.filter((habit) => habit.archivepending === false && habit.archived === false).map((habit) =>(
                                     <div className="habit-line" key={habit.id} >
                                         <div className="habit-info">
                                             <strong>{habit.name}</strong>

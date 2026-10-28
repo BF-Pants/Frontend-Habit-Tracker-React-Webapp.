@@ -1,25 +1,12 @@
 import mascot from "../../assets/Logo/HebbyLogo.png";
 import "./Archives.css"
-import habitdata from "../../data/habits.js";
-import {useState} from "react";
+import {HabitContext} from "../../context/HabitContext.jsx";
+import {useContext, useState} from "react";
 
 function Archives() {
-    const [habits, setHabits] = useState(habitdata);
 
-    function archiveComplete(id) {
-        setHabits((pendingHabits) => pendingHabits.map((habit) => habit.id === id ? {...habit, archived:true, archivepending: false} :habit
-        )
-        )
-        console.log(habits);
-    }
+    const { habits, loading, error, archiveFinalise, archiveUndo } = useContext(HabitContext);
 
-    function undoArchive(id) {
-        setHabits((pendingHabits) => pendingHabits.map((habit) => habit.id === id ? {...habit, archivepending: false} :habit
-            )
-        )
-        console.log(habits);
-
-    }
     return (
         <>
             <main className="archive-page">
@@ -41,10 +28,10 @@ function Archives() {
                                     {/*Conditional rendering for if habit is fully archived or pending to be archived*/}
                                     {habit.archivepending && (
                                         <div className="archive-actions">
-                                            <button className="archive-finalize-button" onClick={() => archiveComplete(habit.id)}>
+                                            <button className="archive-finalize-button" onClick={() => archiveFinalise(habit.id)}>
                                                 Finalize
                                             </button>
-                                            <button className="undo-button" onClick={() => undoArchive(habit.id)}>
+                                            <button className="undo-button" onClick={() => archiveUndo(habit.id)}>
                                                 Undo
                                             </button>
                                         </div>
