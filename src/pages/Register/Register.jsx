@@ -25,7 +25,7 @@ function Register() {
                 },
                 {
                     headers: {
-                        'novi-education-project-id': '39cb5325-95c1-4319-a258-146625bf33ea'
+                        'novi-education-project-id': `${import.meta.env.VITE_NOVI_API_ID}`
                     }
                 }
             );

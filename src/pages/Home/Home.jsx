@@ -2,7 +2,7 @@
 import "./Home.css"
 import {HabitContext} from "../../context/HabitContext.jsx";
 import {useContext} from "react";
-
+import WeatherWidget from "../../components/WeatherWidget/WeatherWidget.jsx";
 
 function ProgressWheel({completed, total}) {
     const percentage = total === 0 ? 0 : Math.round((completed/total) * 100);
@@ -83,7 +83,7 @@ function Home() {
                         />
                     </div>
                     <div className="weather-container">
-                        <p>Placeholder here comes OpenWeatherApi data</p>
+                       <WeatherWidget/>
                     </div>
                 </section>
             </main>

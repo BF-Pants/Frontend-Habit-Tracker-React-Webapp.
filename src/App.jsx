@@ -1,5 +1,5 @@
-import React, {useContext} from 'react';
-import { Route, Routes, Navigate} from "react-router-dom"
+import React from 'react';
+import { Route, Routes} from "react-router-dom"
 import Header from "./components/Header/Header.jsx";
 import Login from './pages/Login/Login.jsx'
 import Home from './pages/Home/Home.jsx'
@@ -10,10 +10,9 @@ import About from "./pages/About/About.jsx";
 import Contact from "./pages/Contact/Contact.jsx";
 import NewHabit from "./pages/NewHabit/NewHabit.jsx";
 import Register from "./pages/Register/Register.jsx";
-import {AuthContext} from "./context/AuthContext.jsx";
 
 function App() {
-    const { isAuth } = useContext(AuthContext);
+
   return (
     <>
         <Header />
