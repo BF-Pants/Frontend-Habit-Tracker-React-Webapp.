@@ -2,6 +2,7 @@ import React, {createContext, useContext, useEffect, useState} from 'react';
 import axios from "axios";
 import {AuthContext} from "./AuthContext.jsx";
 
+
 export const HabitContext = createContext({});
 
 function HabitContextProvider({ children }) {
@@ -32,7 +33,7 @@ function HabitContextProvider({ children }) {
             const response= await axios.get(`https://novi-backend-api-wgsgz.ondigitalocean.app/api/users/${userId}/habits`,
                 {
                     headers: {
-                        'novi-education-project-id': '39cb5325-95c1-4319-a258-146625bf33ea',
+                        'novi-education-project-id': `${import.meta.env.VITE_NOVI_API_ID}`,
                         Authorization: `Bearer ${ token }`,
                     },
 
@@ -69,7 +70,7 @@ function HabitContextProvider({ children }) {
 
                 {
                     headers: {
-                        'novi-education-project-id': '39cb5325-95c1-4319-a258-146625bf33ea',
+                        'novi-education-project-id': `${import.meta.env.VITE_NOVI_API_ID}`,
                         Authorization: `Bearer ${ token }`,
                     },
                 }
@@ -169,7 +170,7 @@ function HabitContextProvider({ children }) {
                     habit,
                     {
                         headers: {
-                            'novi-education-project-id': '39cb5325-95c1-4319-a258-146625bf33ea',
+                            'novi-education-project-id': `${import.meta.env.VITE_NOVI_API_ID}`,
                             Authorization: `Bearer ${ token }`,
                         }
                     }
@@ -193,7 +194,7 @@ function HabitContextProvider({ children }) {
                 await axios.delete(`https://novi-backend-api-wgsgz.ondigitalocean.app/api/habits/${habitId}`,
                     {
                         headers: {
-                            'novi-education-project-id': '39cb5325-95c1-4319-a258-146625bf33ea',
+                            'novi-education-project-id': `${import.meta.env.VITE_NOVI_API_ID}`,
                             Authorization: `Bearer ${ token }`,
                         }
                     }

@@ -38,7 +38,7 @@ function AuthContextProvider({ children }) {
             const response = await axios.get(`https://novi-backend-api-wgsgz.ondigitalocean.app/api/users/${id}`,
                 {
                     headers: {
-                        'novi-education-project-id': '39cb5325-95c1-4319-a258-146625bf33ea',
+                        'novi-education-project-id': `${import.meta.env.VITE_NOVI_API_ID}`,
                         Authorization: `Bearer ${ token }`,
                     },
 
@@ -76,16 +76,6 @@ function AuthContextProvider({ children }) {
         const decodedToken =  jwtDecode(userDetails.token);
         console.log(decodedToken.userId);
         void getUserData(decodedToken.userId, userDetails.token, '/home');
-        // toggleIsAuthenticated({
-        //     isAuth: true,
-        //     status: 'done',
-        //     user: {
-        //         email: userDetails.user.email,
-        //         id: userDetails.user.id,
-        //     }
-        // });
-
-        // navigate('/home');
     }
 
     function loggingOut() {
