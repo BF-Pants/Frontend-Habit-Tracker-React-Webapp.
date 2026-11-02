@@ -1,6 +1,7 @@
 
 import "./Home.css"
 import {HabitContext} from "../../context/HabitContext.jsx";
+import {NotesContext} from "../../context/NotesContext.jsx";
 import {useContext} from "react";
 import WeatherWidget from "../../components/WeatherWidget/WeatherWidget.jsx";
 
@@ -37,7 +38,11 @@ function ProgressWheel({completed, total}) {
 }
 
 function Home() {
+
     const { habits } = useContext(HabitContext);
+
+    const { homeNotes, setHomeNotes, saveHomeNotes } = useContext(NotesContext);
+
     const completedHabits = habits.filter((habit) => habit.completed).length;
     const totalHabits = habits.length
 
@@ -79,8 +84,10 @@ function Home() {
                         <h2>Notes</h2>
 
                         <textarea
-                            placeholder="Write a few notes here."
+                            value={homeNotes}
+                            onChange={(e) => {setHomeNotes(e.target.value)}}
                         />
+                        <button className="save-button" onClick={saveHomeNotes}>Save notes</button>
                     </div>
                     <div className="weather-container">
                        <WeatherWidget/>

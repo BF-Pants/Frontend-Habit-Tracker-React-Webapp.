@@ -79,7 +79,7 @@ function AuthContextProvider({ children }) {
     }
 
     function loggingOut() {
-        localStorage.removeItem("token");
+        localStorage.clear()
         console.log("User has logged out!");
         toggleIsAuthenticated({
             isAuth: false,
