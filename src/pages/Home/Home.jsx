@@ -40,7 +40,6 @@ function ProgressWheel({completed, total}) {
 function Home() {
 
     const { habits, loading } = useContext(HabitContext);
-    console.log(habits);
 
     const { homeNotes, setHomeNotes, saveHomeNotes } = useContext(NotesContext);
 

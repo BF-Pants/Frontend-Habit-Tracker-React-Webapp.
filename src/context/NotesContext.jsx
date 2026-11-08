@@ -22,7 +22,6 @@ function NotesContextProvider({ children })  {
 
         const savedNotes = localStorage.getItem(localKey);
         setHomeNotes(savedNotes ?? defaultNotes);
-        console.log(homeNotes);
     }, [userId, localKey]);
 
     async function saveHomeNotes() {
