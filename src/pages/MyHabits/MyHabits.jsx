@@ -1,7 +1,7 @@
 
 import "./MyHabits.css"
 import mascot from "../../assets/Logo/HabbyLogo.png"
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import { useNavigate } from "react-router-dom";
 import {HabitContext} from "../../context/HabitContext.jsx";
 
@@ -11,6 +11,8 @@ function myHabits(){
 
     const { habits, loading, error, toggleHabit, saveHabits, archiveHabit, deleteHabit } = useContext(HabitContext);
 
+    const [saved, setSaved] = useState(false);
+
     if (loading) {
         return <p> Loading....</p>;
     }
@@ -19,6 +21,16 @@ function myHabits(){
         return <p> {error}</p>;
     }
 
+
+    async function handleSave() {
+        await saveHabits();
+
+        setSaved(true)
+
+        setTimeout(() => {
+            setSaved(false)
+        }, 2000)
+    }
 
     function handleDelete(habitId) {
         const confirmed = window.confirm(
@@ -54,8 +66,8 @@ function myHabits(){
                                 <h1>My Habits</h1>
                                 <p>Build better habits, one day at a time</p>
                             </article>
-                            <button className="save-button" onClick={saveHabits}>
-                                    Save
+                            <button className="save-button" onClick={handleSave}>
+                                {saved ? "Habits saved!" : "Save"}
                             </button>
                         </div>
                         <div className="my-habits-aside-container">

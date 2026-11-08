@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './WeatherWidget.css';
 
-// The weather displayed is set to the city of Rotterdam
+// The weather displayed is set to the city of Rotterdam. Change it to the city you want by looking up the latitude and longitude of your city on https://www.latlong.net/ //
 const LAT = 51.9244;
 const LON = 4.4777;
 
@@ -62,7 +62,7 @@ function WeatherWidget() {
                 toggleLoading(false);
             }
         }
-        loadWeatherData();
+        void loadWeatherData();
     }, [])
     if (loading) {
         return <section className="weather-widget">Loading forecast...</section>;

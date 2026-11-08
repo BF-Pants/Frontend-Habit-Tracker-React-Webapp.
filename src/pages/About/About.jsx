@@ -20,12 +20,12 @@ function About() {
                     </div>
 
                     <section className="about-description-section">
-                        <div className="about-description-left">
+                        <div>
                             <p>
                                 With Habbit Buddy you can add habits and specify them to your exact needs. Leave notes down on the dashboard for those extra little reminders or words of encouragement. With the handy weather forecast system you get the latest weather info straightaway, so you wont be stuck running in the rain.
                             </p>
                         </div>
-                        <div className="about-description-right">
+                        <div>
                             <p>
                                 We at HabitInc. believe that improving one's self should not be done alone, teamwork makes the dream work after all. With that in mind we created a buddy, a Habbit Buddy. Someone that is there to help remind you of the things that are important. Habbit Buddy is maintained by a small group of people in The Netherlands.
                             </p>

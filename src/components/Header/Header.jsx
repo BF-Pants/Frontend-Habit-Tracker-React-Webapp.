@@ -22,7 +22,7 @@ function Header() {
                 />
             </button>
             <nav className="main-navigation">
-                {isAuth.isAuth ?
+                {isAuth.isAuth ? /* Logged in vs not logged in */
                     <ul className="nav-link">
                         <li>
                             <NavLink to="/home">{({isActive}) => isActive ? "active-link" : "default-link"}Home</NavLink>
@@ -46,7 +46,7 @@ function Header() {
                     :
                     <ul className="nav-link">
                         <li>
-                            <NavLink to="/">{({isActive}) => isActive ? "active-link" : "default-link"}Login</NavLink>
+                            <NavLink to="/"> {({isActive}) => isActive ? "active-link" : "default-link"}Login</NavLink>
                         </li>
                         <li>
                             <NavLink to="/register">{({isActive}) => isActive ? "active-link" : "default-link"}Register</NavLink>

@@ -39,12 +39,13 @@ function ProgressWheel({completed, total}) {
 
 function Home() {
 
-    const { habits } = useContext(HabitContext);
+    const { habits, loading } = useContext(HabitContext);
+    console.log(habits);
 
     const { homeNotes, setHomeNotes, saveHomeNotes } = useContext(NotesContext);
 
-    const completedHabits = habits.filter((habit) => habit.completed).length;
-    const totalHabits = habits.length
+    const completedHabits = habits.filter((habit) => habit.archivepending === false && habit.archived === false && habit.completed).length;
+    const totalHabits = habits.filter((habit) => habit.archivepending === false && habit.archived === false).length
 
     return (
         <>
@@ -64,8 +65,10 @@ function Home() {
                     {/* Container that shows the current habits */}
                     <div className="habit-card">
                         <h2>Today's habits</h2>
-                        <article className="habit-list">
-                            {habits.map((habit) => (
+                        <article className="habit-list"> {/* Filters out habits that have been sent to be archived. */}
+                            {loading ? (<p>Loading habits...</p>)
+                                :
+                                habits.filter((habit) => habit.archivepending === false && habit.archived === false).map((habit) => (
                                 <div className={`habit-item ${habit.completed ? 'completed' : ''}`} key={habit.id}>
                                     <span className="habit-name">{habit.name}</span>
                                     <span className="habit-notes">{habit.notes}</span>

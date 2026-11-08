@@ -25,13 +25,15 @@ function NewHabit () {
         };
         try {
             await createHabit(newHabit)
+            console.log("New habit:", newHabit);
+            navigate("/habits");
         } catch (e) {
             console.log("Couldn't create habit", e)
         }
 
-        console.log("New habit:", newHabit);
 
-        navigate("/habits");
+
+
     }
     function handleCancel() {
         navigate("/habits");

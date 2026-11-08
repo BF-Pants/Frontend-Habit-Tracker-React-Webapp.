@@ -6,23 +6,27 @@ export const NotesContext = createContext({});
 function NotesContextProvider({ children })  {
     const { isAuth } = useContext(AuthContext);
 
-    const [homeNotes, setHomeNotes] = useState('Write any important notes here to remind you later.');
+    const [homeNotes, setHomeNotes] = useState('');
     const userId = isAuth?.user?.userId;
+    const defaultNotes = "Write important things here, so you don't forget."
     const localKey = `homeNotes-${userId}`;
 
 
 
 
     useEffect(() => {
-        if (userId == null) return;
+        if (userId == null) {
+            setHomeNotes(defaultNotes);
+            return;
+        }
 
         const savedNotes = localStorage.getItem(localKey);
-        setHomeNotes(savedNotes ?? '');
-    }, [localKey]);
+        setHomeNotes(savedNotes ?? defaultNotes);
+        console.log(homeNotes);
+    }, [userId, localKey]);
 
-    function saveHomeNotes() {
+    async function saveHomeNotes() {
         if (userId == null) return;
-
         localStorage.setItem(localKey, homeNotes);
     }
 

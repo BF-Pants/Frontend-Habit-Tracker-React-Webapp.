@@ -5,7 +5,6 @@
     padding: 24px;
     box-shadow: 6px 8px 4px #888;
     width: 100%;
-    box-sizing: border-box;
 }
 
 .weather-widget h2 {
@@ -21,8 +20,8 @@
 }
 
 .weather-row {
-    display: grid;
-    grid-template-columns: 48px 65px minmax(0, 1fr);
+    display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 8px;
 }

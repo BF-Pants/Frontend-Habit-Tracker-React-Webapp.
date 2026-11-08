@@ -1,11 +1,11 @@
 import mascot from "../../assets/Logo/HebbyLogo.png";
 import "./Archives.css"
 import {HabitContext} from "../../context/HabitContext.jsx";
-import {useContext, useState} from "react";
+import {useContext} from "react";
 
 function Archives() {
 
-    const { habits, loading, error, archiveFinalise, archiveUndo } = useContext(HabitContext);
+    const { habits, archiveFinalise, archiveUndo } = useContext(HabitContext);
 
     return (
         <>
