@@ -68,7 +68,6 @@
     background-color: white;
     flex:2;
     border-radius: 30px;
-
     padding: 25px 18px 40px;
     display: flex;
     flex-direction: column;
@@ -136,10 +135,10 @@
 
 
 
-.my-habits-aside-container img {
+.habit-buddy-card img {
     width: 15rem;
     height: 15rem;
-    display: block;
+    display: flex;
 }
 
 .habit-buddy-card {
@@ -154,7 +153,6 @@
 
 .habit-checkbox:checked::after {
     content: "✓";
-
     display: flex;
     align-items: center;
     justify-content: center;

@@ -1,11 +1,12 @@
 import React, {createContext, useEffect, useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import {jwtDecode} from "jwt-decode";
-import axios from "axios";
+import {getUserDataApi} from "../api/authApi.js";
 import {isTokenValid} from "../helper/isTokenValid.js";
 
 
 export const AuthContext = createContext({});
+const token= localStorage.getItem("token");
 
 function AuthContextProvider({ children }) {
     const [isAuthenticated, toggleIsAuthenticated] = useState({
@@ -19,10 +20,8 @@ function AuthContextProvider({ children }) {
 
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
         if (token && isTokenValid(token)) {
             const decodedToken =  jwtDecode(token);
-            // zo ja -> haal data op en vul hiermee de state.
             void getUserData(decodedToken.userId, token)
             } else {
                 toggleIsAuthenticated({
@@ -35,22 +34,15 @@ function AuthContextProvider({ children }) {
 
     async function getUserData(id, token, redirectUrl) {
         try {
-            const response = await axios.get(`https://novi-backend-api-wgsgz.ondigitalocean.app/api/users/${id}`,
-                {
-                    headers: {
-                        'novi-education-project-id': `${import.meta.env.VITE_NOVI_API_ID}`,
-                        Authorization: `Bearer ${ token }`,
-                    },
+            const userData = await getUserDataApi(id);
 
-                });
-            console.log(response);
             toggleIsAuthenticated({
                 ...isAuthenticated,
                 isAuth: true,
                 user: {
-                    id: response.data.id,
-                    email: response.data.email,
-                    userId: response.data.id,
+                    id: userData.id,
+                    email: userData.email,
+                    userId: userData.id,
                 },
                 status: 'done',
             })
@@ -74,13 +66,11 @@ function AuthContextProvider({ children }) {
     function loggingIn(userDetails) {
         localStorage.setItem("token", userDetails.token);
         const decodedToken =  jwtDecode(userDetails.token);
-        console.log(decodedToken.userId);
         void getUserData(decodedToken.userId, userDetails.token, '/home');
     }
 
     function loggingOut() {
-        localStorage.removeItem("token");
-        console.log("User has logged out!");
+        localStorage.clear()
         toggleIsAuthenticated({
             isAuth: false,
             status: 'done',
@@ -95,6 +85,7 @@ function AuthContextProvider({ children }) {
         isAuth: isAuthenticated,
         login: loggingIn,
         logout: loggingOut,
+        token,
     };
 
     return (

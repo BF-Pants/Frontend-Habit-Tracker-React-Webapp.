@@ -114,7 +114,7 @@
 .habit-buddy-card img {
     width: 15rem;
     height: 15rem;
-    display: block;
+    display: flex;
 }
 
 .habit-buddy-card {
